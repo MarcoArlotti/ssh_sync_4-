@@ -1,0 +1,12 @@
+@startuml
+class Calcolatrice {
+    -n1: float
+    -n2: float
+    __
+    +{static} __init__(self,n1,n2)
+    +{static} addizione(n1,n2)
+    +{static} sottrazione(n1,n2)
+    +{static} moltiplicazione(n1,n2)
+    +{static} divisione(n1,n2)
+}
+@enduml

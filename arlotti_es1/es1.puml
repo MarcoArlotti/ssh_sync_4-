@@ -7,3 +7,4 @@ class Persona {
     +saluta(self)
     +descrizione(self)
 }
+@enduml
