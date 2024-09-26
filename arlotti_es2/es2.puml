@@ -1,0 +1,11 @@
+@startuml
+class Conto_bancario {
+    -numero_conto
+    -intestatario
+    -__saldo
+    __
+    +__init__(self,numero_conto,intestatario,saldo)
+    +get_saldo(self,depositato)
+    +desposita(self)
+    +preleva(self,prelevare)
+}
