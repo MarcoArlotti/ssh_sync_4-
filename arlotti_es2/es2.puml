@@ -9,3 +9,4 @@ class Conto_bancario {
     +desposita(self)
     +preleva(self,prelevare)
 }
+@enduml
