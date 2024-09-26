@@ -1,0 +1,9 @@
+@startuml
+class Persona {
+    -nome: str
+    -eta: int
+    -citta: str
+    __
+    +saluta(self)
+    +descrizione(self)
+}
