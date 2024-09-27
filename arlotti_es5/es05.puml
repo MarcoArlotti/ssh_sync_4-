@@ -1,0 +1,28 @@
+@startuml
+Manager ^-- Dipendente
+Sviluppatore ^-- Dipendente
+class Dipendente {
+    -nome: str
+    -stipendio: float
+    __
+    +__init__(self,nome: str,stipendio: float)
+}
+class Manager {
+    -numero_di_team
+    -nome: str
+    -stipendio: float
+    __
+    +get_nome(self)
+    +get_stipendio(self)
+    +get_numero_di_team(self)
+}
+class Sviluppatore {
+    -linguaggio_di_programmazione
+    -nome: str
+    -stipendio: float
+    __
+    +get_nome(self)
+    +get_stipendio(self)
+    +get_linguaggio_di_programmazioe(self)
+}
+@enduml
