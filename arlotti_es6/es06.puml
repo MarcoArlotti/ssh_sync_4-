@@ -1,0 +1,20 @@
+@startuml Pagamento
+Pagamento ^-- CartaDiCredito
+Pagamento ^-- PayPall
+class Pagamento {
+    +processa_pagamento(self):
+}
+class PayPall {
+    -email
+    -password
+    +__init__(self,email,password)
+    +processa_pagamento(self)
+}
+class CartaDiCredito {
+    -codice1
+    -codice2
+    -codice3
+    +__init__(self,nome,codice1,codice2,codice3)
+    +processa_pagamento(self)
+}
+@enduml
