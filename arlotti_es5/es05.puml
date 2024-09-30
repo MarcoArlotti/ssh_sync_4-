@@ -1,10 +1,9 @@
 @startuml
-Manager ^-- Dipendente
-Sviluppatore ^-- Dipendente
+Dipendente ^-- Manager 
+Dipendente ^-- Sviluppatore
 class Dipendente {
     -nome: str
     -stipendio: float
-    __
     +__init__(self,nome: str,stipendio: float)
 }
 class Manager {
