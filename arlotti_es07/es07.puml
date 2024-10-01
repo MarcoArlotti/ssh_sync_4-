@@ -1,0 +1,55 @@
+@startuml
+MaterialeBiblioteca ^-- Libro
+MaterialeBiblioteca ^-- Rivista
+MaterialeBiblioteca ^-- DVD
+class MaterialeBiblioteca {
+    +Titolo
+    +anno_pubblicazione
+    +disponibile
+    __
+    +prestito #diventa False
+    +restituzione #diventa True
+    
+    
+
+}
+class Libro {
+    +Titolo
+    +anno_pubblicazione
+    +disponibile
+    +autore
+    +numero_pagine
+    __
+    +prestito #diventa False
+    +restituzione #diventa True
+    +get_titolo()
+    +get_autore()
+    +prestito()
+    +is_disponibile()
+    +restituzione()
+}
+class Rivista {
+    +Titolo
+    +anno_pubblicazione
+    +disponibile
+    +numero_edizione
+    +mese_pubblicazione
+    __
+    +prestito #diventa False
+    +restituzione #diventa True
+    +get_titolo()
+    +get_numero_edizione()
+}
+class DVD {
+    +Titolo
+    +anno_pubblicazione
+    +disponibile
+    +regista
+    +durata
+    __
+    +prestito #diventa False
+    +restituzione #diventa True
+    +get_titolo()
+    +get_regista()
+}
+@enduml
