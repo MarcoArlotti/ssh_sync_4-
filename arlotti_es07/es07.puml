@@ -3,7 +3,7 @@ MaterialeBiblioteca ^-- Libro
 MaterialeBiblioteca ^-- Rivista
 MaterialeBiblioteca ^-- DVD
 class MaterialeBiblioteca {
-    +Titolo
+    +titolo
     +anno_pubblicazione
     +disponibile
     __
@@ -17,7 +17,7 @@ class MaterialeBiblioteca {
 
 }
 class Libro {
-    +Titolo
+    +titolo
     +anno_pubblicazione
     +disponibile
     +autore
@@ -32,7 +32,7 @@ class Libro {
     +restituzione()
 }
 class Rivista {
-    +Titolo
+    +titolo
     +anno_pubblicazione
     +disponibile
     +numero_edizione
@@ -44,7 +44,7 @@ class Rivista {
     +get_numero_edizione()
 }
 class DVD {
-    +Titolo
+    +titolo
     +anno_pubblicazione
     +disponibile
     +regista
