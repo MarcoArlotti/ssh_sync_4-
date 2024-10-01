@@ -9,6 +9,9 @@ class MaterialeBiblioteca {
     __
     +prestito #diventa False
     +restituzione #diventa True
+    +get_titolo()
+    +get_anno_pubblicazione()
+    +is_disponibile()
     
     
 

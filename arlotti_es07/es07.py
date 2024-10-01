@@ -1,4 +1,28 @@
+class MaterialeBiblioteca:
+    def __init__(self,titolo:str,anno_pubblicazione:int,disponibile:bool=True):
+        self.Titolo = Titolo
+        self.anno_pubblicazione = anno_pubblicazione
+        self.disponibile = disponibile
+    def prestito(self):
+    
+    def restituzione(self):
 
+    def get_titolo(self):
+
+    def get_anno_pubblicazione(self):
+    
+    def is_diponibile(self):
+        
+    
+
+class Libro(MaterialeBiblioteca):
+    def __init__(self,titolo):
+    
+
+
+class Rivista(MaterialeBiblioteca):
+
+class DVD(MaterialeBiblioteca):
 # Esempio di utilizzo
 libro = Libro("Il Signore degli Anelli", 1954, "J.R.R. Tolkien", 1178)
 print(libro.get_titolo())  # Output: Il Signore degli Anelli
