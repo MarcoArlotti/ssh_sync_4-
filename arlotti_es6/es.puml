@@ -1,7 +1,0 @@
-@startuml Pagamento
-class Pagamento {
-    +processa_pagamento(self):
-}
-class PayPall {
-    
-}
