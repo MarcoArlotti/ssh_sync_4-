@@ -17,10 +17,16 @@ class MaterialeBiblioteca:
        
     def is_disponibile(self):
         return self.disponibile
+    
     @staticmethod
-    def ricerca(self,matriali,titolo):
+    def ricerca(materiali,titolo):
         
-            
+        for materiale in materiali:
+            print(materiale)
+            if materiale.get_titolo == titolo:
+                risultato = materiale
+                return risultato
+
 
 class Libro(MaterialeBiblioteca):
     def __init__(self,titolo,anno_di_pubblicazione,autore,pagine):
