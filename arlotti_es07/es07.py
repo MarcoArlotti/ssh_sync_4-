@@ -20,13 +20,14 @@ class MaterialeBiblioteca:
     
 
 class Libro(MaterialeBiblioteca):
-    def __init__(self,disponibile,titolo,anno_di_pubblicazione,autore,pagine):
+    def __init__(self,titolo,anno_di_pubblicazione,autore,pagine):
         super().__init__(disponibile)
         self.titolo = titolo
         self.anno_di_pubblicazione = anno_di_pubblicazione
         self.autore = autore
         self.pagine = pagine
-
+    def get_autore(self):
+        return self.autore
     def get_titolo(self):
         return self.titolo
     def get_anno_pubblicazione(self):
