@@ -17,15 +17,16 @@ class MaterialeBiblioteca:
        
     def is_disponibile(self):
         return self.disponibile
-    
+
+    def get_titolo(self): #aggiungere gli altri e rimuovere le ripetizioni
+        return self.titolo
     @staticmethod
     def ricerca(materiali,titolo):
-        
+        risultato = []
         for materiale in materiali:
-            print(materiale)
             if materiale.get_titolo == titolo:
-                risultato = materiale
-                return risultato
+                risultato.append(materiale.get_titolo)
+        return risultato
 
 
 class Libro(MaterialeBiblioteca):
