@@ -18,14 +18,19 @@ class MaterialeBiblioteca:
     def is_disponibile(self):
         return self.disponibile
 
-    def get_titolo(self): #aggiungere gli altri e rimuovere le ripetizioni
+    def get_titolo(self):
         return self.titolo
+    
     @staticmethod
     def ricerca(materiali,titolo):
         risultato = []
-        for materiale in materiali:
-            if materiale.get_titolo == titolo:
-                risultato.append(materiale.get_titolo)
+        for i in materiali:
+            titolo_ = i.get_titolo()
+            if titolo_ == titolo:
+                print("trovato")
+                risultato.append(i)
+        if risultato == [None]:
+            print("libro non trovato")
         return risultato
 
 
@@ -36,31 +41,23 @@ class Libro(MaterialeBiblioteca):
         self.pagine = pagine
     def get_autore(self):
         return self.autore
-    def get_titolo(self):
-        return self.titolo
     def get_anno_pubblicazione(self):
         return self.anno_di_pubblicazione
     
 class Rivista(MaterialeBiblioteca):
-    def __init__(self,disponibile,titolo,anno_di_pubblicazione,numero_edizione):
+    def __init__(self,titolo,anno_di_pubblicazione,numero_edizione,autore):
         super().__init__(titolo,anno_di_pubblicazione)
-
         self.numero_edizione = numero_edizione
+        self.autore = autore
 
-    def get_titolo(self):
-        return self.titolo
-    
     def get_numero_edizione(self):
         return self.numero_edizione
 
 class DVD(MaterialeBiblioteca):
-    def __init__(self,disponibile,titolo,anno_di_pubblicazione,regista):
+    def __init__(self,titolo,anno_di_pubblicazione,regista,durata):
         super().__init__(titolo,anno_di_pubblicazione)
-        self.titolo = titolo
         self.regista = regista
-
-    def get_titolo(self):
-        return self.titolo
+        self.durata = durata
     
     def get_regista(self):
         return self.regista
@@ -87,4 +84,6 @@ print(dvd.get_regista())  # Output: Christopher Nolan
 
 materiali = [libro, rivista, dvd]
 risultato = MaterialeBiblioteca.ricerca(materiali, titolo="Inception")
-print(risultato.get_titolo())  # Output: Inception
+print(risultato)
+for risultato_ in risultato:
+    print(risultato_.get_titolo())  # Output: Inception
