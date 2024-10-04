@@ -1,35 +1,42 @@
 class Piatto:
-    def __init__(nome: str, prezzo: float, disponibile: bool):
+    def __init__(self,nome: str, prezzo: float,):
         self.nome = nome
         self.prezzo = prezzo
         self.disponibile = True
+        
 
-    def ordina(self):
-        self.disponibile = False
-        disponi = True #?????????????
-
+def calcola_conto(piatti_ordinati):
+    conto_totale = 0
+    for piatto in piatti_ordinati:
+        prezzo_portata = piatto.prezzo
+        conto_totale = conto_totale + prezzo_portata
+    return conto_totale
+        
+def stampa_menu(piatti_ordinati): #per ogni portata è diversa in testo TODO
+    #for piatto in piatti_ordinati:
+    #    descrizione = f"{piatto.nome}; {piatto.prezzo}EURO\t {piatto.disponibile}\n"
 
 class Antipasto(Piatto):
-    def __init__(nome: str, prezzo: float, disponibile: bool, ingredienti: list, porzione: int):
-        super().__init__(prezzo, disponibile)
+    def __init__(self,nome: str, prezzo: float, ingredienti: list, porzione: int):
+        super().__init__(nome,prezzo)
         self.ingredienti = ingredienti
         self.porzione = porzione
 
 class Primo(Piatto):
-    def __init__(nome: str, prezzo: float, disponibile: bool, tipo_pasta: str, sugo: str):
-        super().__init__(prezzo, disponibile)
+    def __init__(self,nome: str, prezzo: float, tipo_pasta: str, sugo: str):
+        super().__init__(nome,prezzo)
         self.tipo_pasta = tipo_pasta
         self.sugo = sugo
 
 class Secondo(Piatto):
-    def __init__(nome: str, prezzo: float, disponibile: bool, tipo_carne : str, cottura: str):
-        super().__init__(prezzo, disponibile)
+    def __init__(self,nome: str, prezzo: float, tipo_carne : str, cottura: str):
+        super().__init__(nome,prezzo)
         self.tipo_carne = tipo_carne
         self.cottura = cottura
 
 class Dolce(Piatto):
-    def __init__(nome: str, prezzo: float, disponibile: bool, tipo_dolce: str, calorie: float):
-        super().__init__(prezzo, disponibile)
+    def __init__(self,nome: str, prezzo: float, tipo_dolce: str, calorie: float):
+        super().__init__(nome,prezzo)
         self.tipo_dolce = tipo_dolce
         self.claorie = calorie
 # Esempio di utilizzo
