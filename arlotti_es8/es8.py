@@ -12,9 +12,9 @@ def calcola_conto(piatti_ordinati):
         conto_totale = conto_totale + prezzo_portata
     return conto_totale
         
-def stampa_menu(piatti_ordinati): #per ogni portata è diversa in testo TODO
-    #for piatto in piatti_ordinati:
-    #    descrizione = f"{piatto.nome}; {piatto.prezzo}EURO\t {piatto.disponibile}\n"
+def stampa_menu(piatti_ordinati):
+    for piatto in piatti_ordinati:
+        descrizione = f"{piatto.nome}; {piatto.prezzo}EURO\t {piatto.disponibile}\n"
 
 class Antipasto(Piatto):
     def __init__(self,nome: str, prezzo: float, ingredienti: list, porzione: int):

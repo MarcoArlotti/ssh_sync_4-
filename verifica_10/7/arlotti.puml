@@ -1,0 +1,57 @@
+@startuml
+Dispositivo ^-- Smartphone
+Dispositivo ^-- Laptop
+Dispositivo ^-- Tablet
+
+class Dispositivo {
+    +marca
+    +modello
+    +prezzo
+    +disponibile
+    __
+    +__init__(self, marca: str, modello: str, prezzo: int)
+    +vendi(self)
+    +rifornisci(self)
+
+    +get_marca(self)
+    +set_marca(self,marca_cambiata)
+
+    +get_modello(self)
+    +set_modello(self,modello_cambiato)
+
+    +get_prezzo(self)
+    +set_prezzo(self,prezzo_cambiato)
+
+    +vendi(self)
+    +disponibile(self)
+
+    +calcola_sconto(prezzo,quanto_scontare)
+    +conta_dispositi()
+}
+class Smartphone{
+    +memoria_ssd
+    __
+    +__init__(self, marca: str, modello: str, prezzo: int, memoria_ssd: int)
+    +descrizione(self)
+}
+
+class Laptop {
+    +ram
+    __
+    +__init__(self, marca: str, modello: str, prezzo: int, ram: int)
+    +decrizione(self)
+}
+
+class Tablet {
+    +schermo
+    __
+    +__init__(self, marca: str, modello: str, prezzo: int, schermo: int)
+    +descrizione(self)
+}
+
+class Inventario {
+    +__init__(self)
+    +aggiungi_dispositivo(self,cosa_aggiungere)
+    +stampa_inventario(inventario)
+}
+@enduml
