@@ -1,0 +1,35 @@
+@startuml
+Piatto ^-- Antipasto
+Piatto ^-- Primo
+Piatto ^-- Secondo
+Piatto ^-- Dolce
+class Piatto {
+    +nome: str
+    +prezzo: float
+    +disponibile: bool
+}
+class Antipasto {
+    +ingredienti
+    +porzione
+    __
+    + __init__(self,nome: str, prezzo: float, ingredienti: list, porzione: int)
+}
+class Primo {
+    +tipo_pasta
+    +sugo
+    __
+    +__init__(self,nome: str, prezzo: float, tipo_pasta: str, sugo: str)
+}
+class Secondo {
+    +tipo_carne
+    +cottura
+    __
+    +__init__(self,nome: str, prezzo: float, tipo_carne : str, cottura: str)
+}
+class Dolce {
+    +tipo_dolce
+    +calorie
+    __
+    +__init__(self,nome: str, prezzo: float, tipo_dolce: str, calorie: float)
+}
+@enduml

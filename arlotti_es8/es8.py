@@ -14,8 +14,9 @@ def calcola_conto(piatti_ordinati):
         
 def stampa_menu(piatti_ordinati):
     for piatto in piatti_ordinati:
-        descrizione = f"{piatto.nome}; {piatto.prezzo}EURO\t {piatto.disponibile}\n"
-
+        descrizione = f"{piatto.nome}; {piatto.prezzo} EURO\t {piatto.disponibile}"
+        print(descrizione)
+        
 class Antipasto(Piatto):
     def __init__(self,nome: str, prezzo: float, ingredienti: list, porzione: int):
         super().__init__(nome,prezzo)
