@@ -1,0 +1,15 @@
+class Libro {
+    -titolo
+    -autore
+    -pagine
+    __
+    +__init__(self, titolo:str, autore :str, pagine:int)
+    -titolo(self)
+    -titolo(self)
+
+    -autore(self)
+    -autore(self)
+    
+    -pagine(self)
+    -pagine(self)
+}
