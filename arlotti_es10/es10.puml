@@ -1,0 +1,10 @@
+class Frazione {
+    +numeratore
+    +denominatore
+    __
+    +__init__(self,numeratore,denominatore)
+    +__add__(self,numeri)
+    +__sub__(self,numeri)
+    +__mul__(self,numeri)
+    +__repr__(self)
+}
