@@ -4,7 +4,6 @@ class Frazione:
         self.denominatore = denominatore
 
     def __add__(self,numeri): #fare che se la parte sotto della frazione è diversa, fà un MCM e lo calcola
-        if denominatore
         return Frazione(self.numeratore + numeri.numeratore, self.denominatore)
     def __sub__(self,numeri):
         return Frazione(self.numeratore - numeri.numeratore, self.denominatore)
