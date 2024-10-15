@@ -7,7 +7,8 @@
 - [Conclusioni](#conclusioni)
 
 
-I **magic methods** (o metodi speciali) in Python sono metodi che hanno nomi speciali e che permettono di definire o modificare il comportamento predefinito degli oggetti. Questi metodi sono sempre racchiusi tra due doppi underscore (`__`), come `__init__`, e sono automaticamente chiamati in specifici contesti, come durante operazioni aritmetiche o confronti.
+
+**magic methods** (o metodi speciali) in Python sono metodi che hanno nomi speciali e che permettono di definire o modificare il comportamento predefinito degli oggetti. Questi metodi sono sempre racchiusi tra due doppi underscore (`__`), come `__init__`, e sono automaticamente chiamati in specifici contesti, come durante operazioni aritmetiche o confronti.
 
 ### 1. `__init__`: Il Costruttore
 
