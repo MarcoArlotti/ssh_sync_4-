@@ -9,10 +9,10 @@ class Ricetta {
     +difficolta : float
     +disponibile : bool
     __
-    +tempo_totale_preparazione(self) #stampa il tempo di preparazione di ogni ricetta
+    +tempo_totale_preparazione(self) 
     +verifica_disponibilita_ingredienti(self)
-    +stampa_ricette(self) # prende una lista di ricette e stampa le informazioni di tutte le ricette
-    +verifica_ingredienti(self) # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
+    +stampa_ricette(self)
+    +verifica_ingredienti(self)
 
     +get_nome(self)
     +set_nome(self)

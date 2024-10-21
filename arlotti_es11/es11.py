@@ -5,6 +5,41 @@ class Ricetta:
         self.ingredienti = ingredienti
         self.difficolta = difficolta
         self.disponibile = True
+    def tempo_totale_preparazione(self): #stampa il tempo di preparazione di ogni ricetta
+    
+    def verifica_disponibilita_ingredienti(self):
+
+    def stampa_ricette(self): # prende una lista di ricette e stampa le informazioni di tutte le ricette
+
+    def verifica_ingredienti(self): # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
+    
+
+    def get_nome(self):
+    
+    def set_nome(self):
+    
+    
+    def get_tempo_preparazione(self):
+    
+    def set_tempo_preparazione(self):
+    
+
+    def get_ingredienti(self):
+    
+    def set_ingredienti(self):
+    
+
+    def get_difficolta(self):
+    
+    def set_difficolta(self):
+    
+
+    def get_disponiblie(self):
+    
+    def set_disponiblie(self):
+    
+
+    def aggiungi_ingredienti(self):
         
 class Primo(Ricetta):
 
