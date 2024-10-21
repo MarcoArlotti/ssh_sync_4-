@@ -5,6 +5,7 @@ class Ricetta:
         self.ingredienti = ingredienti
         self.difficolta = difficolta
         self.disponibile = True
+        
 class Primo(Ricetta):
 
 class secondo(Ricetta):
