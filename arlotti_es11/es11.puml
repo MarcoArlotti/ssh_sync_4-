@@ -36,11 +36,11 @@ class Primo {
     +tipo_pasta : str
     +sugo : str
     __
-    +get_pasta
-    +set_pasta
-
-    +get_sugo
-    +set_sugo
+    +get_pasta(self)
+    +set_pasta(self)
+    
+    +get_sugo(self)
+    +set_sugo(self)
 
 }
 
@@ -65,5 +65,5 @@ class Dolce {
     +set_zucchero(self)
 
     +get_tipo_dolce(self)
-    +set_zucchero(self)
+    +set_tipo_dolce(self)
 }
