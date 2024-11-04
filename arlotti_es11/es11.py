@@ -11,8 +11,8 @@ class Ricetta:
 
     #def stampa_ricette(self): # prende una lista di ricette e stampa le informazioni di tutte le ricette
 
-    #def verifica_ingredienti(self): # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
-    #
+    def verifica_ingredienti(self): # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
+    
     
     def __str__(self):
         return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}."
@@ -180,8 +180,8 @@ dolce.difficolta = "a prova di diga"
 dolce.zucchero = 89.0
 dolce.tipo_dolce = "dessert"
 print(dolce)
-#ricette = [primo, secondo, dolce]
-#ricette_possibili = verifica_ingredienti(ricette, ["Spaghetti", "Uova", "Pancetta", "Bistecca", "Sale", "Pepe", "Mascarpone", "Caffè", "Savoiardi", "Pane", "Pomodoro", "Basilico"])
+ricette = [primo, secondo, dolce]
+ricette_possibili = verifica_ingredienti(ricette, ["Spaghetti", "Uova", "Pancetta", "Bistecca", "Sale", "Pepe", "Mascarpone", "Caffè", "Savoiardi", "Pane", "Pomodoro", "Basilico"])
 #print(f"Ricette che possono essere preparate: {len(ricette_possibili)}")
 #
 #print("\nInformazioni sulle ricette:")
