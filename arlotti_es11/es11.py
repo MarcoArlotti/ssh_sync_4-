@@ -113,13 +113,32 @@ class Secondo(Ricetta):
 
 
 class Dolce(Ricetta):
-    def __init__(self,zucchero:float, tipo_dolce:str):
-        super.__init__(self, nome:str, tempo_preparazione:float, ingredienti:list, difficolta:float)
+    def __init__(self, nome:str, tempo_preparazione:float, ingredienti:list, difficolta:float, zucchero:float, tipo_dolce:str):
+        super().__init__(nome, tempo_preparazione, ingredienti, difficolta)
         self._zucchero = zucchero
         self._tipo_dolce = tipo_dolce
     def __str__(self):
-        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}\n\t"
+        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}\n\tQUANTO ZUCCHERO: {self.zucchero}g\n\tTIPO DI DOLCE: {self.tipo_dolce}"
+        
+    @property
+    def zucchero(self):
+        return self._zucchero
 
+    @zucchero.setter
+    def zucchero(self,zucchero):
+        if type(zucchero) == float or type(zucchero) == int:
+            self._zucchero = zucchero
+
+
+    @property
+    def tipo_dolce(self):
+        return self._tipo_dolce
+
+    @tipo_dolce.setter
+    def tipo_dolce(self,tipo_dolce):
+        if type(tipo_dolce) == str:
+            self._tipo_dolce = tipo_dolce
+    
 
 
 # Esempio di utilizzo
@@ -147,13 +166,20 @@ secondo.ingredienti = ["fabio","olio","patate"]
 secondo.difficolta = "a prova di fabio"
 
 secondo.tipo_carne = "fabio"
-secondo.cottura= "bruciato"
+secondo.cottura = "bruciato"
 
 print(primo)
 print(secondo)
 #dolce
-dolce = Dolce("Tiramisù", 30, ["Mascarpone", "Caffè", "Savoiardi"], "Media", 200, "Dessert")
+dolce = Dolce("Tiramisù", 30, ["Mascarpone", "Caffè", "Savoiardi"], "Media", 2.0, "Dessert")
+dolce.nome = "marscarponi"
+dolce.tempo_preparazione = 99999999999999999999999999
+dolce.ingredienti = ["mascarponi","una diga","acqua"]
+dolce.difficolta = "a prova di diga"
 
+dolce.zucchero = 89.0
+dolce.tipo_dolce = "dessert"
+print(dolce)
 #ricette = [primo, secondo, dolce]
 #ricette_possibili = verifica_ingredienti(ricette, ["Spaghetti", "Uova", "Pancetta", "Bistecca", "Sale", "Pepe", "Mascarpone", "Caffè", "Savoiardi", "Pane", "Pomodoro", "Basilico"])
 #print(f"Ricette che possono essere preparate: {len(ricette_possibili)}")
