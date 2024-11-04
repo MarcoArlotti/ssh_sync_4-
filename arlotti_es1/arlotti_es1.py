@@ -5,12 +5,12 @@ class Persona:
         self.citta = citta
 
     def saluta(self):
-        print(f"ciao sono {self.nome}.")
+        return f"Ciao, mi chiamo {self.nome}."
 
     def descrizione(self):
-        print(f"ho {self.eta} e ovviamente ho scelto {self.citta}.")
+        return f"Ho {self.eta} anni e vivo a {self.citta}."
 
-persona1 = Persona("Mario",18,"Roma")
+persona1 = Persona("Mario",30,"Roma")
 
 persona1.saluta()
 persona1.descrizione()
