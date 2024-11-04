@@ -1,4 +1,4 @@
-class Conto_bancario:
+class ContoBancario:
     def __init__(self, numero_conto, intestatario, saldo):
         self.numero_conto = numero_conto
         self.intestatario = intestatario
@@ -8,17 +8,23 @@ class Conto_bancario:
         return self.__saldo
 
     def deposita(self,depositato):
-        saldo = conto_bancario.get_saldo() 
-        self.__saldo = saldo + depositato #privato
+        if not depositato < 0:
+            saldo = contoBancario.get_saldo() 
+            self.__saldo = saldo + depositato #privato
 
     def preleva(self,prelevare):
-        saldo = conto_bancario.get_saldo()
+        saldo = contoBancario.get_saldo()
         rimasto = saldo - prelevare
-        self.__saldo = rimasto
+        if not rimasto < 0:
+            self.__saldo = rimasto
 
-conto_bancario = Conto_bancario("123456789", "Mario Rossi", 1000.0)
-print(conto_bancario.get_saldo())  # Output: 1000.0
-conto_bancario.deposita(500.0)
-print(conto_bancario.get_saldo())  # Output: 1500.0
-conto_bancario.preleva(200.0)
-print(conto_bancario.get_saldo())  # Output: 1300.0
+contoBancario = ContoBancario("123456789", "Mario Rossi", 1000.0)
+print(contoBancario.get_saldo())  # Output: 1000.0
+contoBancario.deposita(500.0)
+print(contoBancario.get_saldo())  # Output: 1500.0
+contoBancario.preleva(200.0)
+print(contoBancario.get_saldo())
+contoBancario.preleva(2000.0)
+print(contoBancario.get_saldo())  # Output: 1300.0
+contoBancario.deposita(-500.0)
+print(contoBancario.get_saldo())
