@@ -21,9 +21,13 @@ class Auto:
             self._modello = modello
 
     def associa_motore(self,motore):
-        if type(motore.numero_seriale) == str and type(motore.tipo) == str:
-            self.motore = motore
-            motore.auto = self
+        motore_nell_auto = self.motore
+        if motore_nell_auto != None:
+            motore_nell_auto.auto = None
+
+        self.motore = motore
+        motore.auto = self
+
         
 class Motore:
     def __init__(self, numero_seriale:str, tipo:str):
@@ -49,15 +53,31 @@ class Motore:
 
     def associa_auto(self, auto):
         self.auto = auto
-        auto.engine = self
+        auto.motore = self
+        
 
 # Creazione delle istanze
 auto1 = Auto("Fiat", "500")
-motore1 = Motore("ENG123456", "Benzina")
+auto2 = Auto("Toyota", "Corolla")
 
+motore1 = Motore("ENG123456", "Benzina")
+motore2 = Motore("ENG654321", "Diesel")
 # Associazione tra auto e motore
 auto1.associa_motore(motore1)
-
+auto2.associa_motore(motore2)
 # Verifica dell'associazione 
 print(f"{auto1.marca} {auto1.modello} ha il motore: {auto1.motore.numero_seriale}")
 print(f"Il motore {motore1.numero_seriale} appartiene a: {motore1.auto.marca} {motore1.auto.modello}")
+
+print(f"{auto2.marca} {auto2.modello} ha il motore: {auto2.motore.numero_seriale}")
+print(f"Il motore {motore2.numero_seriale} appartiene a: {motore2.auto.marca} {motore2.auto.modello}")
+
+auto = Auto("Fiat", "500")
+motore1 = Motore("ENG123456", "Benzina")
+motore2 = Motore("ENG654321", "Diesel")
+
+auto.associa_motore(motore1)
+auto.associa_motore(motore2)
+
+print(motore2)
+print(motore1.auto)

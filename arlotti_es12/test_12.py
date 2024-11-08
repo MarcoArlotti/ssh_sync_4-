@@ -1,4 +1,4 @@
-from src.e12 import Auto, Motore  # type: ignore
+from es12 import Auto, Motore  # type: ignore
 
 
 def test_auto_attributes():
@@ -40,7 +40,7 @@ def test_associazione_uno_a_uno():
     assert motore2.auto == auto2
 
 
-def test_sovrascrittura_associazione():
+def test_sovrascrittura_associazione(): #non va
     auto = Auto("Fiat", "500")
     motore1 = Motore("ENG123456", "Benzina")
     motore2 = Motore("ENG654321", "Diesel")
