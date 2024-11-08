@@ -1,0 +1,19 @@
+
+
+class Auto {
+    - marca:str
+    - modello:str
+    - motore :None
+    __
+    +__init__(self, marca:str, modello:str)
+    +associa_motore(self,motore)
+
+}
+class Motore {
+    -numero_seriale:str
+    -tipo:str
+    -auto:None
+    __
+    +__init__(self, numero_seriale:int, tipo:str)
+    +associa_auto(self, auto)
+}

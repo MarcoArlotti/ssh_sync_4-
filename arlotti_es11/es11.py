@@ -1,3 +1,5 @@
+import os
+
 class Ricetta:
     def __init__(self, nome:str, tempo_preparazione:float, ingredienti:list, difficolta:float):
         self._nome = nome
@@ -5,17 +7,27 @@ class Ricetta:
         self._ingredienti = ingredienti
         self._difficolta = difficolta
         #self.disponibile = True
-    #def tempo_totale_preparazione(self): #stampa il tempo di preparazione di ogni ricetta
-    #
+
+    def tempo_totale_preparazione(ricette): #stampa il tempo di preparazione di ogni ricetta
+        tempo_totale = 0
+        for ricetta in ricette:
+            tempo = ricetta.tempo_preparazione
+            tempo_totale = tempo_totale + tempo
+        return f"PER PREPARARE TUTTE LE RICETTE OCCORRONO {tempo_totale} MINUTI"
+    
+    def stampa_ricette(ricette): # prende una lista di ricette e stampa le informazioni di tutte le ricette
+        for ricetta in ricette:
+            print(ricetta)
+
     #def verifica_disponibilita_ingredienti(self):
 
     #def stampa_ricette(self): # prende una lista di ricette e stampa le informazioni di tutte le ricette
 
-    def verifica_ingredienti(self): # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
-    
+    #def verifica_ingredienti(self): # prende una lista di ricette e restituisce quelle che possono essere preparate con gli ingredienti disponibili
+    #
     
     def __str__(self):
-        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}."
+        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione} MINUTI,\n\tDIFFICOLTA': {self.difficolta}."
 
     @property
     def nome(self):
@@ -56,6 +68,7 @@ class Ricetta:
         if type(difficolta) == str:
             self._difficolta = difficolta
 
+
 class Primo(Ricetta):
     def __init__(self, nome:str, tempo_preparazione:float, ingredienti:list, difficolta:float, tipo_pasta:str, sugo:str):
         super().__init__(nome, tempo_preparazione, ingredienti, difficolta)
@@ -63,7 +76,7 @@ class Primo(Ricetta):
         self._sugo = sugo
 
     def __str__(self):
-        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}\n\tTIPO PASTA: {self.tipo_pasta}\n\tSUGO USATO: {self.sugo}."
+        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione} MINUTI,\n\tDIFFICOLTA': {self.difficolta}\n\tTIPO PASTA: {self.tipo_pasta}\n\tSUGO USATO: {self.sugo}."
 
     @property
     def tipo_pasta(self):
@@ -90,7 +103,7 @@ class Secondo(Ricetta):
         self._tipo_carne = tipo_carne
         self._cottura = cottura
     def __str__(self):
-        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}\n\tTIPO CARNE: {self.tipo_carne}\n\tCOTTURA: {self.cottura}."
+        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione} MINUTI,\n\tDIFFICOLTA': {self.difficolta}\n\tTIPO CARNE: {self.tipo_carne}\n\tCOTTURA: {self.cottura}."
 
     @property
     def tipo_carne(self):
@@ -111,14 +124,13 @@ class Secondo(Ricetta):
         if type(cottura) == str:
             self._cottura = cottura
 
-
 class Dolce(Ricetta):
     def __init__(self, nome:str, tempo_preparazione:float, ingredienti:list, difficolta:float, zucchero:float, tipo_dolce:str):
         super().__init__(nome, tempo_preparazione, ingredienti, difficolta)
         self._zucchero = zucchero
         self._tipo_dolce = tipo_dolce
     def __str__(self):
-        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione},\n\tDIFFICOLTA': {self.difficolta}\n\tQUANTO ZUCCHERO: {self.zucchero}g\n\tTIPO DI DOLCE: {self.tipo_dolce}"
+        return f"{self._nome}; \n\tINGREDIENTI: {self.ingredienti},\n\tTEMPO DI PREPARAZIONE: {self.tempo_preparazione} MINUTI,\n\tDIFFICOLTA': {self.difficolta}\n\tQUANTO ZUCCHERO: {self.zucchero}g\n\tTIPO DI DOLCE: {self.tipo_dolce}"
         
     @property
     def zucchero(self):
@@ -139,29 +151,25 @@ class Dolce(Ricetta):
         if type(tipo_dolce) == str:
             self._tipo_dolce = tipo_dolce
     
-
-
-# Esempio di utilizzo
-#primo
+#Esempio di utilizzo
+    #primo
 primo = Primo("Spaghetti alla Carbonara", 20, ["Spaghetti", "Uova", "Pancetta"], "Media", "Spaghetti", "Carbonara")
-
+os.system("cls")
 print(primo)
-print()
 primo.nome = "fabio alla carbonara"
-primo.tempo_preparazione = 99999999999999999999999999
+primo.tempo_preparazione = 9
 primo.ingredienti = ["fabio","carbonara","pecorino"]
 primo.difficolta = "a prova di fabio"
 
 primo.tipo_pasta = "marangoni"
 primo.sugo = "carbofabio"
 
-#secondo
+    #secondo
 secondo = Secondo("Bistecca alla Fiorentina", 30, ["Bistecca", "Sale", "Pepe"], "Alta", "Manzo", "Media")
 print(secondo)
-print()
 
 secondo.nome = "fabio in padella"
-secondo.tempo_preparazione = 99999999999999999999999999
+secondo.tempo_preparazione = 95
 secondo.ingredienti = ["fabio","olio","patate"]
 secondo.difficolta = "a prova di fabio"
 
@@ -170,19 +178,21 @@ secondo.cottura = "bruciato"
 
 print(primo)
 print(secondo)
-#dolce
+    #dolce
 dolce = Dolce("Tiramisù", 30, ["Mascarpone", "Caffè", "Savoiardi"], "Media", 2.0, "Dessert")
 dolce.nome = "marscarponi"
-dolce.tempo_preparazione = 99999999999999999999999999
+dolce.tempo_preparazione = 23
 dolce.ingredienti = ["mascarponi","una diga","acqua"]
 dolce.difficolta = "a prova di diga"
 
 dolce.zucchero = 89.0
 dolce.tipo_dolce = "dessert"
 print(dolce)
+    #stampa tutte le ricette con il tempo totale di preparazione
 ricette = [primo, secondo, dolce]
-ricette_possibili = verifica_ingredienti(ricette, ["Spaghetti", "Uova", "Pancetta", "Bistecca", "Sale", "Pepe", "Mascarpone", "Caffè", "Savoiardi", "Pane", "Pomodoro", "Basilico"])
+print("\nSTAMPA DI TUTTE LE RICETTE;\n")
+Ricetta.stampa_ricette(ricette)
+print(Ricetta.tempo_totale_preparazione(ricette))
+    #verifica ingredienti
+#ricette_possibili = verifica_ingredienti(ricette, ["Spaghetti", "Uova", "Pancetta", "Bistecca", "Sale", "Pepe", "Mascarpone", "Caffè", "Savoiardi", "Pane", "Pomodoro", "Basilico"])
 #print(f"Ricette che possono essere preparate: {len(ricette_possibili)}")
-#
-#print("\nInformazioni sulle ricette:")
-#stampa_ricette(ricette)
