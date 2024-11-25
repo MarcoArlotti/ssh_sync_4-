@@ -78,6 +78,3 @@ motore2 = Motore("ENG654321", "Diesel")
 
 auto.associa_motore(motore1)
 auto.associa_motore(motore2)
-
-print(motore2)
-print(motore1.auto)
