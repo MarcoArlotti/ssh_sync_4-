@@ -1,14 +1,21 @@
 class Insegnanti:
-    def __init__(self,nome,cognome):
+    def __init__(self,nome,cognome,strumento_musicale):
         self._nome = nome
         self._cognome = cognome
-        self.lista_corsi = []
+        self._strumento_musicale = strumento_musicale
+    def
+
 class Studenti(Insegnanti):
-    def __init__(self):
-        pass
-class Corsi:
-    def __init__(self):
-        pass
+    def __init__(self,nome,cognome):
+        super().__init__(nome,cognome)
+        self._lista_corsi = []
+    
+
+class Corsi(Insegnanti):
+    def __init__(self,nome,durata):
+        super().__init__(nome)
+        self._durata = durata
+    
 
 def main():
     # Creazione degli insegnanti

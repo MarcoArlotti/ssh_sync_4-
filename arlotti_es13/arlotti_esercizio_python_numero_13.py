@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-class Studente:
-    def __init__(self,nome:str ,matricola:int, corsi:int):
-        self._nome = nome
-        self._matricola = matricola
-        self._corsi = corsi
-=======
 class Casa:
     def __init__(self, indirizzo:str, proprietario:str):
         self._indirizzo = indirizzo
@@ -15,7 +8,7 @@ class Casa:
         lista_stanze = self.stanze
         lista_stanze.append(stanza)
         self.stanze = lista_stanze
-#
+
     @property
     def indirizzo(self):
         return self._indirizzo
@@ -36,14 +29,11 @@ class Stanza:
     def __init__(self, nome:str, superficie:int):
         self._nome = nome
         self._superficie = superficie
->>>>>>> 0b06bab9d70156b3a60b34f7082cf1d495ade70f
-
     @property
     def nome(self):
         return self._nome
     @nome.setter
     def nome(self,nome):
-<<<<<<< HEAD
         if type(nome) == str:
             self._nome = nome
 
@@ -83,10 +73,6 @@ class Corso:
     def codice(self,codice):
         if type(codice) == str:
             self._codice = codice
-            
-=======
-        if type(self._nome) == str:
-            self._nome = nome
     
     @property
     def superficie(self):
@@ -113,4 +99,4 @@ casa.aggiungi_stanza(camera)
 print(f"Casa di {casa.proprietario} situata in {casa.indirizzo} contiene le seguenti stanze:")
 for stanza in casa.stanze:
     print(f"- {stanza.nome} ({stanza.superficie} mq)")
->>>>>>> 0b06bab9d70156b3a60b34f7082cf1d495ade70f
+
