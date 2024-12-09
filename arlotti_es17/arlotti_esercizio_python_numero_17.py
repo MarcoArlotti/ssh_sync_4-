@@ -46,10 +46,6 @@ class Studente(Persona):
             self.corsi = corso_
             corso.studenti.append(self)
         
-        
-        
-        
-
 class Insegnante(Persona):
     def __init__(self,nome,cognome,strumento):
         super().__init__(nome,cognome)
@@ -85,9 +81,7 @@ class Corso:
     def durata(self,durata):
         if type(durata) == str:
             self._durata = durata
-
-
-
+            
 def main():
     # Creazione degli insegnanti
     insegnante1 = Insegnante("Mario", "Rossi", "Pianoforte")
