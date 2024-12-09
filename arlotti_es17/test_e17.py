@@ -1,4 +1,4 @@
-from arlotti_esercizio_python_numero_17 import Insegnante, Studente, Corso  # type: ignore
+from arlotti_esercizio_python_numero_17 import Insegnante, Studente, Corso, Persona # type: ignore
 
 
 def test_insegnante_attributes():

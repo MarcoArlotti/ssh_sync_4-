@@ -27,13 +27,27 @@ class Studente(Persona):
 
     def set_insegnante(self,insegnate_nuovo):
         self.insegnante = insegnate_nuovo
-    
+        lista = insegnate_nuovo.studenti
+        lista.append(self)
+        
     def iscrivi_corso(self,corso):
-        self.corsi.append(corso)
-        # corso.studenti.append(self)
-        print(f"corso.studenti {corso.studenti}")
-        corso.studenti.append("test")
-        print(f"corso.studenti {corso.studenti}")
+        if not self.corsi == []:
+            for i in self.corsi:
+                if  i == corso:
+                    break
+                else:
+                    corso_ = self.corsi
+                    corso_.append(corso)
+                    self.corsi = corso_
+                    corso.studenti.append(self)
+        else:
+            corso_ = self.corsi
+            corso_.append(corso)
+            self.corsi = corso_
+            corso.studenti.append(self)
+        
+        
+        
         
 
 class Insegnante(Persona):
@@ -49,7 +63,7 @@ class Insegnante(Persona):
     def strumento(self,strumento):
         if type(strumento) == str:
             self._strumento = strumento
-d
+
 class Corso:
     def __init__(self,nome,durata):
         self._durata = durata
@@ -97,8 +111,16 @@ def main():
     studente2.iscrivi_corso(corso1)
 
     # Stampa delle informazioni
+    for i in studente1.corsi:
+        print(i)
+    for h in studente2.corsi:
+        print(h)
     print(studente1.insegnante.nome)
     for s in insegnante1.studenti:
+        print(s)
+
+    print(studente2.insegnante.nome)
+    for s in insegnante2.studenti:
         print(s)
 
 if __name__ == "__main__":
