@@ -49,7 +49,7 @@ class Insegnante(Persona):
     def strumento(self,strumento):
         if type(strumento) == str:
             self._strumento = strumento
-
+d
 class Corso:
     def __init__(self,nome,durata):
         self._durata = durata
