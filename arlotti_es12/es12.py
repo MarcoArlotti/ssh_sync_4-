@@ -77,8 +77,4 @@ motore1 = Motore("ENG123456", "Benzina")
 motore2 = Motore("ENG654321", "Diesel")
 
 auto.associa_motore(motore1)
-<<<<<<< HEAD
 auto.associa_motore(motore2)
-=======
-auto.associa_motore(motore2)
->>>>>>> 0b06bab9d70156b3a60b34f7082cf1d495ade70f
