@@ -1,18 +1,8 @@
 import os
 
-#with open('contatore_cartelle.txt', 'r') as file:
-#    valore = file.read()
-#valore = int(valore)
-#
-#print(valore)
-#
-##for i in range(valore): #INFINITO
-#valore = valore + 1
-i = 20
-os.system(f"mkdir arlotti_es{i}") #crea cartella esercizio
-with open(f'arlotti_es{i}/arlotti_esercizio_python_numero_{i}.py', 'w') as file_da_creare: #crea file python
+i = 21 #numero esercizio da preimpostare
+os.system(f"mkdir arlotti_es{i}") #crea cartella dell'esercizio
+with open(f'arlotti_es{i}/arlotti_esercizio_python_numero_{i}.py', 'w') as file_da_creare: #crea esercizio in python
     file_da_creare.write("")
-with open(f'arlotti_es{i}/arlotti_puml_numero_{i}.puml', 'w') as file_da_creare: #crea flie puml
+with open(f'arlotti_es{i}/arlotti_uml_numero_{i}.md', 'w') as file_da_creare: #crea file uml
     file_da_creare.write("")
-with open('contatore_cartelle.txt', 'w') as file:
-    valore = file.write("valore")
