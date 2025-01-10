@@ -42,6 +42,14 @@ class Membro(Persona):
     def set_allenatore(self,allenatore):
         self._allenatore_assegnato = allenatore
         allenatore._membro_assegnato = self
+    
+    def iscrivi_corso(self,corso):
+        non_assegnare = false
+        for corso_ in self.corsi_iscritti:
+            if corso_ == corso:
+                non_assegnare = True
+        if non_assegnare == False:
+            self.corsi_iscritti.append(corso)
 
 
     def corsi_iscritti(self):
