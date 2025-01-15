@@ -24,7 +24,7 @@ class Allenatore(Persona):
         self._membro_assegnato = None
         self._specializzazione = specializzazione
         self._scheda_assegnata = None
-        self._corsi = None
+        self._corsi = []
 
     def specializzazione(self):
         return self._specializzazione
@@ -38,25 +38,37 @@ class Membro(Persona):
         super().__init__(nome,cognome)
         self._allenatore_assegnato = None
         self._corsi_iscritti = []
+        self._scheda_allenamento_assegnata = None
 
     def set_allenatore(self,allenatore):
         self._allenatore_assegnato = allenatore
         allenatore._membro_assegnato = self
     
     def iscrivi_corso(self,corso):
-        non_assegnare = false
-        for corso_ in self.corsi_iscritti:
+        non_assegnare = False
+        for corso_ in self._corsi_iscritti:
             if corso_ == corso:
                 non_assegnare = True
         if non_assegnare == False:
-            self.corsi_iscritti.append(corso)
+            self._corsi_iscritti.append(corso)
 
+    def set_scheda_allenamento(self,scheda):
+        self._scheda_allenamento_assegnata = scheda
 
+    @property
+    def scheda_allenamento_assegnata(self):
+        return self._scheda_allenamento_assegnata
+    @scheda_allenamento_assegnata.setter
+    def scheda_allenamento_assegnata(self,scheda_allenamento_assegnata_da_assegnare):
+        if type(scheda_allenamento_assegnata_da_assegnare) != str and type(scheda_allenamento_assegnata_da_assegnare) != int and type(scheda_allenamento_assegnata_da_assegnare) != bool and type(scheda_allenamento_assegnata_da_assegnare) != float and type(scheda_allenamento_assegnata_da_assegnare) != tuple and type(scheda_allenamento_assegnata_da_assegnare) != list and type(scheda_allenamento_assegnata_da_assegnare) != dict:
+            self._scheda_allenamento_assegnata = scheda_allenamento_assegnata_da_assegnare
+            
+    @property
     def corsi_iscritti(self):
         return self._corsi_iscritti
-    @property
-    def corsi_iscritti(self,corsi_iscritti): #TODO controllo se è una classe
-        self._corsi_iscritti = corsi_iscritti
+    @corsi_iscritti.setter
+    def corsi_iscritti(self,corsi_iscritti_da_verificare): #TODO controllo se è una classe
+        self._corsi_iscritti = corsi_iscritti_da_verificare
 
 class Corso:
     def __init__(self,nome:str,durata:str,allenatore):
