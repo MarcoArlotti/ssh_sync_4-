@@ -13,6 +13,7 @@
     -date quando_creata
     -Utente autore
     -Album a_che_album_appartiene
+    -metti_in_un_album(album)
     }
     class Album {
     -str titolo

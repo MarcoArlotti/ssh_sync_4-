@@ -9,5 +9,5 @@ class Camera {
     str: tipo
     bool: occupata
 }
-Albergo "1"--> "n" Camera :possiede
+Albergo "1" --> "n" Camera :possiede
 ```
