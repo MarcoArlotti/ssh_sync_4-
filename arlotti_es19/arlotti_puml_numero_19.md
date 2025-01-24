@@ -1,36 +1,41 @@
 ```mermaid
     classDiagram
     class Animale {
-    str codice_microcip
-    str nome
-    int eta
-    str razza
-    date data_ingresso
-    str caratteristiche_comportamento
-    Box dove_si_trova
-    file foto_animale
-    Persona propietario
-    tuple stato_salute[vaccinazioni,visite_veterinarie]
+    -str codice_microcip
+    -str nome
+    -int eta
+    -str razza
+    -date data_ingresso
+    -str caratteristiche_comportamento
+    -Box dove_si_trova
+    -file foto_animale
+    -Persona propietario
+    -tuple stato_salute[vaccinazioni,-visite_veterinarie]
     -gestisci_salute(stato_salutevaccinazioni, visite_veterinarie)
     -assegna_propietario(Persona)
     }
     class Box {
-    disponibile
+    -disponibile
     -assegna_animale_a_un_box(Animale)
     }
     class Canile {
-    lista_box
+    -lista_box
     -regitra_nuovo_animale(Animale)
     }
     class Persona {
-    Animale animale_adottato
-    list animali_adottati
+    -Animale animale_adottato
+    -list animali_adottati
     }
     class Inventario {
-    cibo
-    medicinal
+    -cibo
+    -medicinal
     }
     class Personale {
-    turni
+    -turni
     }
+    Canile --> Box :gestisce
+    Persona --> Animale :adotta
+    Animale --> Box :sta nei
+    Personale --> Animale :controlla
+    Personale --> Inventario :gestisce
 ```
