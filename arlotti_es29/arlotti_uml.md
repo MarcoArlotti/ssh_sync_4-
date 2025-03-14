@@ -28,5 +28,8 @@
     -list[Moneta] lista_monete
     -str nome_utente
     }
-    
+    Fonte_dati --> Sistema_trading : fornisce dati
+    Sistema_trading --> Portafoglio : gestisce
+    Portafoglio --> Moneta : gestisce
+    Moneta --> gestore_rischio : influenza
 ```
