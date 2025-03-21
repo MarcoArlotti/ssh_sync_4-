@@ -1,54 +1,53 @@
 ```mermaid
-    classDiagram
+classDiagram
+
+    Corso "1" -- "1" Quiz : ha
+    Studente "*" -- "*" Corso : è iscritto
+    Quiz "1" -- "*" Domanda : contiene
+    Quiz "1" -- "*" QuizAttempt : ha
+    Studente "1" -- "*" QuizAttempt : effettua
 
     class Corso {
-        -str titolo
-        -str descrizione
-        -Docente docente_responsabile
-        -list lista_quiz
-    }
-
-    class Quiz {
-        -list[Domanda] lista_domande
-        -list[Studente] lista_partecipanti
-        -int requisiti_di_superamento %%numero di domande corrette che si devono fare per passare il quiz
-        -calcola_voto() float
-    }
-
-    class Domanda {
-        -str testo
-        -list lista_risposte
-        -str risposta_corretta
+        +str titolo
+        +str descrizione
+        +str docente
+        +Quiz quiz
+        +list[Studente] iscritti
+        +void impostaQuiz(Quiz quiz)
+        +bool iscriviStudente(Studente studente)
     }
 
     class Studente {
-        -str nome
-        -str cognome
-        -str email
-        -list lista_corsi_da_fare
-        -list lista_corsi_completati
-        -list lista_corsi_superati
-        -list lista_corsi_falliti
-        -iscriviti_a_un_corso(Corso corso)
-        -disiscriviti_a_un_corso(Corso corso)
+        +str nome
+        +str cognome
+        +str email
+        +list[Corso] corsiIscritti
+        +list[QuizAttempt] tentativi
     }
 
-    class Fa_quiz {
-        -int numero_tentativi_fatti
-        -Studente studente_che_fa_il_quiz
-        -Quiz che_quiz_si_sta_facendo
-        -int risposta_data
+    class Quiz {
+        +str titolo
+        +list[Domanda] domande
+        +int punteggioMinimo
+        +int valutaRisposte(list[int] risposte)
+        +bool verificaSuperamento(int punteggio)
     }
 
-    class Docente {
-        -str nome
-        -list corsi_creati
+    class Domanda {
+        +str testo
+        +list[str] opzioni
+        +int rispostaCorretta
+        +bool verificaRisposta(int risposta)
     }
 
-    Corso "1" --> "*" Quiz : possiede
-    Docente "1" --> "*" Corso : crea
-    Studente "*" --> "1" Fa_quiz
-    Fa_quiz "*" --> "1" Quiz
-    Quiz "1" --> "*" Domanda
-
+    class QuizAttempt {
+        +DateTime dataOra
+        +Quiz quiz
+        +Studente studente
+        +list[int] risposte
+        +int punteggio
+        +bool superato
+        +void submitRisposte(list[int] risposte)
+        +int calcolaPunteggio()
+    }
 ```
