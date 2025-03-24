@@ -22,7 +22,7 @@
     }
     class Playlist {
         -list video
-        -str nome %% non serve in input
+        -str nome
         -Utente creatore
     }
     class Utente {
@@ -46,6 +46,9 @@
         -list[Utente] canali_seguiti
     }
     class Piattaforma {
+        -list video
+        -aggiungi_video(Video video_)
+        -rimuovi_video(Video video_)
     }
     class Abbonamento {
         -date inizio

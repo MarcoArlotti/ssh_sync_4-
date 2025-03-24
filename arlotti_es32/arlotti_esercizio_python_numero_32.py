@@ -67,9 +67,6 @@ class Utente:
         except:
             return False
         
-
-
-
 class Commento:
     def __init__(self,autore,commento,data_di_pubblicazione,video,canali_seguiti):
         self.autore = autore
@@ -88,7 +85,13 @@ class Piattaforma:
             return True
         except:
             return False
-
+    def rimuovi_video(self,video_):
+        try:
+            self.video.remove(video_)
+            return True
+        except:
+            return False
+        
 class Abbonamento:
     def __init__(self,inizio,fine,tier,prezzo):
         self.inizio = inizio
