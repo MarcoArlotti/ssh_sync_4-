@@ -1,10 +1,11 @@
 class Video:
-    def __init__(self,titolo,descrizione,url,durata,commenti):
+    def __init__(self,titolo,descrizione,url,durata,commenti,piattaforma):
         self.titolo = titolo
         self.descrizione = descrizione
         self.url = url
         self.durata = durata
         self.commenti = commenti
+        self.piattaforma = piattaforma
 
 class Playlist:
     def __init__(self,video,creatore,nome):
@@ -61,6 +62,7 @@ class Utente:
     def aggiungi_commento(self,video,commento):
         try:
             video.commenti.append(commento)
+            video.piattaforma.video.update(video)
             return True
         except:
             return False
