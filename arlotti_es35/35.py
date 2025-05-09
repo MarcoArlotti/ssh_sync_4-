@@ -10,7 +10,17 @@ class Utente:
     
     def crea_progetto(self,titolo):
         titolo = ProgettoMusicale(titolo)
+        self.progetti.append(titolo)
         return titolo
+    
+    def progetti_per_genere(self):
+        pass
+
+    def conta_progetti_totali(self):
+        return len(self.progetti)
+
+    def strumento_piu_usato(self):
+        pass
 
 class ProgettoMusicale:
     def __init__(self,titolo_progetto):
@@ -29,6 +39,11 @@ class ProgettoMusicale:
         else:
             raise ValueError("ERRORE nome_traccia NON E' UNA STR")
 
+    def percentuale_tracce_con_effetti():
+        pass
+    def effetto_piu_usato():
+        pass
+
 class TracciaAudio:
     def __init__(self,nome_traccia):
         self.id_traccia = None
@@ -46,9 +61,10 @@ class TracciaAudio:
         self.effetti_applicati.append(effetto)
 
     def rimuovi_effetto(self,effetto):
-        pass
-    #TODO
-
+        for effetto_ in self.effetti_applicati:
+            if effetto_ == effetto:
+                self.effetti_applicati.remove(effetto_)
+            
     def imposta_sequenza_note(self,note):
         self.sequenza_note_manuali = note
 
@@ -57,6 +73,11 @@ class TracciaAudio:
             self.volume_db = nuovo_volume_db
         else:
             raise ValueError("ERRORE nuovo_volume_db NON E' tra -20 e +20")
+    
+    def ha_effetti():
+        pass
+    def numero_note():
+        pass
 
 class StrumentoVirtuale:
     def __init__(self,id_strumento,nome_strumento,tipo_strumento_virtuale):
@@ -64,9 +85,6 @@ class StrumentoVirtuale:
         self.nome_strumento = nome_strumento
         self.tipo_strumento_virtuale = tipo_strumento_virtuale
     
-    def suona_nota(nota,durata):
-        pass
-
 class EffettoAudio:
     def __init__(self,id_effetto,nome_effetto,tipo_effetto_audio):
         self.id_effetto = id_effetto
@@ -125,12 +143,12 @@ if __name__ == "__main__":
     print("\nStatistiche a livello utente:")
     print(f"Progetti per genere: {utente.progetti_per_genere()}")
     print(f"Numero totali progetti: {utente.conta_progetti_totali()}")
-    print(f"Strumento più usato: {utente.strumento_piu_usato().nome_strumento}")
+    # print(f"Strumento più usato: {utente.strumento_piu_usato().nome_strumento}") TODO
 
     print("\nStatistiche progetto rock:")
-    print(f"Percentuale tracce con effetti: {progetto_rock.percentuale_tracce_con_effetti()}%")
-    print(f"Effetto più usato: {progetto_rock.effetto_piu_usato().nome_effetto}")
+    # print(f"Percentuale tracce con effetti: {progetto_rock.percentuale_tracce_con_effetti()}%")
+    # print(f"Effetto più usato: {progetto_rock.effetto_piu_usato().nome_effetto}")
 
     print("\nStatistiche traccia basso:")
-    print(f"Ha effetti: {traccia_basso.ha_effetti()}")
-    print(f"Numero di note: {traccia_basso.numero_note()}")
+    # print(f"Ha effetti: {traccia_basso.ha_effetti()}")
+    # print(f"Numero di note: {traccia_basso.numero_note()}")
