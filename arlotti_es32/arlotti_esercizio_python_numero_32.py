@@ -1,11 +1,12 @@
+
 class Video:
-    def __init__(self,titolo,descrizione,url,durata,commenti,piattaforma):
+    def __init__(self,titolo,descrizione,url,durata):
         self.titolo = titolo
         self.descrizione = descrizione
         self.url = url
         self.durata = durata
-        self.commenti = commenti
-        self.piattaforma = piattaforma
+        self.commenti = []
+        self.piattaforma = None
 
 class Playlist:
     def __init__(self,video,creatore,nome):
@@ -14,11 +15,10 @@ class Playlist:
         self.creatore = creatore
 
 class Utente:
-    def __init__(self,nome,email,password,playlist,abbonamento):
+    def __init__(self,nome,email,password,abbonamento):
         self.nome = nome
         self.email = email
         self.password = password
-        self.playlist = playlist
         self.abbonamento = abbonamento
         self.playlists = []
 
@@ -35,20 +35,20 @@ class Utente:
 
     def aggiungi_video_playlist(self,video,playlist):
         try:
-            playlist.append(video)
-            self.playlists.update(playlist)
-            return True
-        except:
-            return False
-
-    def rimuovi_video_playlist(self,video,playlist):
-        try:
-            for video_ in playlist:
-                if video_.titolo == video.titolo:
-                    playlist.remove(video)
+            for playlist in self.playlists:
+                if playlist.nome == playlist:
+                    playlist.video.append(video)
                     self.playlists.update(playlist)
                     return True
+        except:
             return False
+    def rimuovi_video_playlist(self,video,playlist):
+        try:
+            for playlist in self.playlists:
+                if playlist.nome == playlist:
+                    playlist.video.remove(video)
+                    self.playlists.update(playlist)
+                    return True
         except:
             return False
 
@@ -68,12 +68,11 @@ class Utente:
             return False
         
 class Commento:
-    def __init__(self,autore,commento,data_di_pubblicazione,video,canali_seguiti):
+    def __init__(self,autore,commento,data_di_pubblicazione,video,):
         self.autore = autore
         self.commento = commento
         self.data_di_pubblicazione = data_di_pubblicazione
         self.video = video
-        self.canali_seguiti = canali_seguiti
 
 class Piattaforma:
     def __init__(self):
@@ -98,3 +97,16 @@ class Abbonamento:
         self.fine = fine
         self.tier = tier
         self.prezzo = prezzo
+
+you_fabio = Piattaforma()
+
+video1 = Video("vendo un rene per comprare la switch 2!!!!1!!111!!!","yap yap yap yapyap","www.fabio/1.com",50)
+
+you_fabio.aggiungi_video(video1)
+
+fabio = Utente("nome","fabio@dezznuts.com","1234","povero")
+
+fabio.crea_playlist("test")
+fabio.aggiungi_video_playlist(video1,"test")
+
+Commento1 = Commento(fabio,"hisjadjndDSAKJL PRIMO",(12,12,12),video1)
