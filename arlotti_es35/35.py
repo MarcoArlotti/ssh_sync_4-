@@ -1,6 +1,7 @@
 from enum import Enum
 import random
-
+import uuid
+import datetime
 class Utente:
     def __init__(self,id_utente,nome_utente,email):
         self.id_utente = id_utente
@@ -8,33 +9,52 @@ class Utente:
         self.email = email
         self.progetti = []
     
-    def crea_progetto(self,titolo):
-        titolo = ProgettoMusicale(titolo)
-        self.progetti.append(titolo)
-        return titolo
+    def crea_progetto(self,titolo,genere):
+        progetto = ProgettoMusicale(id_progetto=generate_id(),titolo_progetto=titolo,genere_musicale=genere)
+        self.progetti.append(progetto)
+        return progetto
     
     def progetti_per_genere(self):
-        pass
+        canzoni = {}
+        for progetto in self.progetti:
+            canzoni[progetto.genere_musicale] = progetto.titolo_progetto
+        return canzoni
 
     def conta_progetti_totali(self):
         return len(self.progetti)
 
     def strumento_piu_usato(self):
-        pass
+        #grazie galo
+        strumenti_count = {
+            TipoStrumento.BASSO: 0,
+            TipoStrumento.CHITARRA: 0,
+            TipoStrumento.BATTERIA: 0,
+        }
+        for progetto in self.progetti:
+            for traccia in progetto.tracce:
+                tipo = traccia.strumento_utilizzato.tipo_strumento_virtuale
+                strumenti_count[tipo] += 1
+
+        max_count = max(strumenti_count.values())
+
+        for tipo, count in strumenti_count.items():
+            if count == max_count:
+                return tipo
+        return None
+ 
 
 class ProgettoMusicale:
-    def __init__(self,titolo_progetto):
-        self.id_progetto = random.randint(1,1000000000000000000000000)
+    def __init__(self,id_progetto,titolo_progetto,genere_musicale):
+        self.id_progetto = id_progetto
         self.titolo_progetto = titolo_progetto
-        self.data_creazione = None
-        self.genere_musicale = None
+        self.data_creazione = "oggi"
+        self.genere_musicale = genere_musicale
         self.tracce = []
 
-    def aggiungi_traccia(self,nome_traccia):
+    def aggiungi_traccia(self,nome_traccia,strumento_utilizzato):
         if type(nome_traccia) == str:
+            nome_traccia = TracciaAudio(nome_traccia,strumento_utilizzato)
             self.tracce.append(nome_traccia)
-
-            nome_traccia = TracciaAudio(nome_traccia)
             return nome_traccia
         else:
             raise ValueError("ERRORE nome_traccia NON E' UNA STR")
@@ -45,13 +65,13 @@ class ProgettoMusicale:
         pass
 
 class TracciaAudio:
-    def __init__(self,nome_traccia):
+    def __init__(self,nome_traccia,strumento_utilizzato):
         self.id_traccia = None
         self.nome_traccia = nome_traccia
         self.durata_secondi = None
         self.volume_db = None
         self.sequenza_note_manuali = None
-        self.strumento_utilizzato = None
+        self.strumento_utilizzato = strumento_utilizzato
         self.effetti_applicati = []
 
     def aggiungi_strumento(self,strumento):
@@ -101,54 +121,55 @@ class TipoEffetto(Enum):
     DELAY = 2
     DISTORSIONE = 3
 
+def generate_id():
+    return f"{uuid.uuid1()}"
 
 # Esempio di utilizzo
 if __name__ == "__main__":
     # Creazione utente
-    utente = Utente("u1", "Mario Rossi", "mario@example.com")  # type: ignore # noqa: F821
+    utente = Utente(generate_id(), "Mario Rossi", "mario@example.com")
 
-    # Creazione progetti
-    progetto_rock = utente.crea_progetto("La Mia Canzone Rock")
-    progetto_rock.genere_musicale = "Rock"
-    
-    progetto_jazz = utente.crea_progetto("Jazz Session")
-    progetto_jazz.genere_musicale = "Jazz"
+    # Creazione strumenti
+    basso = StrumentoVirtuale(generate_id(), "Basso elettrico", TipoStrumento.BASSO)
+    chitarra = StrumentoVirtuale(generate_id(), "Chitarra elettrica", TipoStrumento.CHITARRA)
+    batteria = StrumentoVirtuale(generate_id(), "Batteria acustica", TipoStrumento.BATTERIA)
 
-    # Aggiunta tracce al progetto rock
-    traccia_basso = progetto_rock.aggiungi_traccia("Linea di basso")
-    traccia_chitarra = progetto_rock.aggiungi_traccia("Chitarra ritmica")
+    # Creazione e gestione primo progetto (Rock)
+    progetto_rock = utente.crea_progetto("La Mia Canzone", "Rock")
 
-    # Creazione e aggiunta strumenti
-    basso = StrumentoVirtuale("s1", "Basso elettrico", TipoStrumento.BASSO)  # type: ignore # noqa: F821
-    chitarra = StrumentoVirtuale("s2", "Chitarra elettrica", TipoStrumento.CHITARRA)  # type: ignore # noqa: F821
-    
-    traccia_basso.aggiungi_strumento(basso)
-    traccia_chitarra.aggiungi_strumento(chitarra)
+    traccia_basso = progetto_rock.aggiungi_traccia("Linea di basso", basso)
+    traccia_chitarra = progetto_rock.aggiungi_traccia("Chitarra ritmica", chitarra)
 
-    # Aggiunta effetti
-    distorsione = EffettoAudio("e1", "Distorsione Heavy", TipoEffetto.DISTORSIONE)  # type: ignore # noqa: F821
-    delay = EffettoAudio("e2", "Delay Echo", TipoEffetto.DELAY)  # type: ignore # noqa: F821
-    
+    distorsione = EffettoAudio(generate_id(), "Distorsione Heavy", TipoEffetto.DISTORSIONE)
+    riverbero = EffettoAudio(generate_id(), "Riverbero Hall", TipoEffetto.RIVERBERO)
+
     traccia_basso.applica_effetto(distorsione)
-    traccia_chitarra.applica_effetto(distorsione)
-    traccia_chitarra.applica_effetto(delay)
+    traccia_chitarra.applica_effetto(riverbero)
 
-    # Impostazione volume e note
     traccia_basso.modifica_volume(-6)
-    traccia_basso.imposta_sequenza_note("C2 G2 C3 E3")
     traccia_chitarra.modifica_volume(-3)
-    traccia_chitarra.imposta_sequenza_note("C4 G4 C5 E5 G5")
+
+    traccia_basso.imposta_sequenza_note("C2 G2 C3 E3")
+    traccia_chitarra.imposta_sequenza_note("E4 G4 B4")
+
+    # Creazione e gestione secondo progetto (Jazz)
+    progetto_jazz = utente.crea_progetto("Jazz Session", "Jazz")
+
+    traccia_basso_jazz = progetto_jazz.aggiungi_traccia("Bass groove", basso)
+    traccia_batteria = progetto_jazz.aggiungi_traccia("Drums", batteria)
+
+    delay = EffettoAudio(generate_id(), "Delay leggero", TipoEffetto.DELAY)
+    traccia_basso_jazz.applica_effetto(delay)
 
     # Test dei metodi statistici
-    print("\nStatistiche a livello utente:")
+    print("\nStatistiche utente:")
+    print(f"Totale progetti: {utente.conta_progetti_totali()}")
     print(f"Progetti per genere: {utente.progetti_per_genere()}")
-    print(f"Numero totali progetti: {utente.conta_progetti_totali()}")
-    # print(f"Strumento più usato: {utente.strumento_piu_usato().nome_strumento}") TODO
+    print(f"Strumento più usato: {utente.strumento_piu_usato()}")
 
-    print("\nStatistiche progetto rock:")
-    # print(f"Percentuale tracce con effetti: {progetto_rock.percentuale_tracce_con_effetti()}%")
-    # print(f"Effetto più usato: {progetto_rock.effetto_piu_usato().nome_effetto}")
+    print("\nStatistiche progetto Rock:")
+    print(f"Percentuale tracce con effetti: {progetto_rock.percentuale_tracce_con_effetti()}%")
+    print(f"Effetto più usato: {progetto_rock.effetto_piu_usato()}")
 
-    print("\nStatistiche traccia basso:")
-    # print(f"Ha effetti: {traccia_basso.ha_effetti()}")
-    # print(f"Numero di note: {traccia_basso.numero_note()}")
+    print("\nStatistiche tracce:")
+    print(f"Traccia basso ha effetti: {traccia_basso.ha_effetti()}")
