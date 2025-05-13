@@ -1,7 +1,7 @@
 from enum import Enum
-import random
 import uuid
 import datetime
+from dataclasses import dataclass
 class Utente:
     def __init__(self,id_utente,nome_utente,email):
         self.id_utente = id_utente
@@ -47,7 +47,7 @@ class ProgettoMusicale:
     def __init__(self,id_progetto,titolo_progetto,genere_musicale):
         self.id_progetto = id_progetto
         self.titolo_progetto = titolo_progetto
-        self.data_creazione = "oggi"
+        self.data_creazione = datetime.datetime.now()
         self.genere_musicale = genere_musicale
         self.tracce = []
 
@@ -59,10 +59,34 @@ class ProgettoMusicale:
         else:
             raise ValueError("ERRORE nome_traccia NON E' UNA STR")
 
-    def percentuale_tracce_con_effetti():
-        pass
-    def effetto_piu_usato():
-        pass
+    def percentuale_tracce_con_effetti(self):
+        traccie_con_effetti = 0
+        for traccia in self.tracce:
+            if not traccia.effetti_applicati == None:
+                traccie_con_effetti = traccie_con_effetti + 1
+
+        totale_traccie = len(self.tracce)
+        percentuale = (traccie_con_effetti / totale_traccie) * 100
+        return percentuale
+
+    def effetto_piu_usato(self):
+        riverbero = 0
+        delay = 0
+        distorsione = 0
+        for traccia in self.tracce:
+            for effetto in traccia.effetti_applicati:
+                if effetto.tipo_effetto_audio.value == "riverbero":
+                    riverbero = riverbero + 1
+                elif effetto.tipo_effetto_audio.value == "delay":
+                    delay = delay + 1
+                elif effetto.tipo_effetto_audio.value == "distorsione":
+                    distorsione = distorsione + 1
+        if riverbero > delay and riverbero > distorsione:
+            return "riverbero"
+        elif delay > riverbero and delay > distorsione:
+            return "delay"
+        else:
+            return "distorsione"
 
 class TracciaAudio:
     def __init__(self,nome_traccia,strumento_utilizzato):
@@ -94,8 +118,10 @@ class TracciaAudio:
         else:
             raise ValueError("ERRORE nuovo_volume_db NON E' tra -20 e +20")
     
-    def ha_effetti():
-        pass
+    def ha_effetti(self):
+        if self.effetti_applicati == []:
+            return True
+        return False
     def numero_note():
         pass
 
@@ -104,22 +130,22 @@ class StrumentoVirtuale:
         self.id_strumento = id_strumento
         self.nome_strumento = nome_strumento
         self.tipo_strumento_virtuale = tipo_strumento_virtuale
-    
-class EffettoAudio:
-    def __init__(self,id_effetto,nome_effetto,tipo_effetto_audio):
-        self.id_effetto = id_effetto
-        self.nome_effetto = nome_effetto
-        self.tipo_effetto_audio = tipo_effetto_audio
 
 class TipoStrumento(Enum):
-    BATTERIA = 1
-    CHITARRA = 2
-    BASSO = 3
+    BATTERIA = "batteria"
+    CHITARRA = "chitarra"
+    BASSO = "basso"
 
 class TipoEffetto(Enum):
-    RIVERBERO = 1
-    DELAY = 2
-    DISTORSIONE = 3
+    RIVERBERO = "riverbero"
+    DELAY = "delay"
+    DISTORSIONE = "distorsione"
+
+@dataclass
+class EffettoAudio:
+    id_effetto: str
+    nome_effetto: str
+    tipo_effetto_audio: TipoEffetto
 
 def generate_id():
     return f"{uuid.uuid1()}"
